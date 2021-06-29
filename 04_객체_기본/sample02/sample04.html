@@ -1,0 +1,23 @@
+<script>
+  let user = { name : 'lee', age : 34};
+  let clone = {}; // 빈객체 생성 
+  Object.assign(clone, user); // clone에 user를 복사 
+  console.log(clone);
+
+  let clone2 = Object.assign({},user);
+  console.log(clone2);
+
+  // 여러 객체를 병합하는 방법 
+  // Object.assign(dest, [src1, src2, src3...]) 
+  let test1 = { name : 'hong', age : 33 }; 
+  let test2 = { hobby : 'basketball'}; 
+  let test3 = { job : 'developer'}; 
+  Object.assign(test1, test2, test3); // test1 객체에 test2, test3의 프로퍼티와 값을 넣어준다. 
+  console.log(test1);
+
+  // 같은 프로퍼티가 있다면 덮어 쓴다.  
+  let demo1 = {name : 'lee', age : 32}; 
+  let demo2 = {name : 'hong', gender : 'male'}; // name프로퍼티가 중복된다. 
+  Object.assign(demo1, demo2);
+  console.log(demo1); // { name: "hong", age: 32, gender: "male"}
+</script>

@@ -1,0 +1,31 @@
+<script>
+function deepClone(obj) {
+  if (obj === null || typeof obj !== "object") { // null 이거나 원시값인 경우 
+    return obj
+  }
+  const result = Array.isArray(obj) ? [] : {} // 배열인지 객체인지 결정 
+  for (let key of Object.keys(obj)) {  // 여기서 key는 배열 엘리먼트의 각각의 값이다. 
+    result[key] = deepClone(obj[key]); 
+  }
+  return result; 
+}
+
+
+
+let user = {
+  name: "lee",
+  sizes: { // sizes는 객체의 참조값이다. 
+    height: 182,
+    width: 50
+  }
+};
+// Object.keys(객체) : 객체의 프로퍼티를 배열로 반환한다. 위 아래의 경우  ['name', 'sizes']
+console.log(Object.keys(user));
+
+let clone = deepClone(user);
+
+// 깊은 복사 : 참조하는 값이 다름 
+console.log(user.sizes == clone.sizes); // false
+console.log(user.sizes === clone.sizes); // false 
+
+</script>

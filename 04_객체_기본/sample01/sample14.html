@@ -1,0 +1,10 @@
+<script>
+let obj = {
+  test: undefined
+};
+console.log(obj.test === undefined); // true
+// true이면 프로퍼티값이 존재하지 않는다고 판단했다. 그런데 obj 객체는 test가 존재한다. 
+
+// in 연산자를 쓰면 정확히 test프로퍼티가 존재함을 알 수 있다. 
+console.log('test' in obj); // true
+</script>

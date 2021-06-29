@@ -1,0 +1,16 @@
+<script>
+let user = { name : 'lee', age : 14}; 
+let clone = {} // 빈 객체 
+
+// 빈 객체에 user프로퍼티를 각각 복사한다. 
+for(let key in user){
+  clone[key] = user[key];
+}
+
+// 프로퍼티와 그 값이 같은 동일한 객체가 복제되었다.
+console.log(user); 
+console.log(clone);
+
+console.log(user == clone); // false; 
+console.log(user === clone); // false; 
+</script>

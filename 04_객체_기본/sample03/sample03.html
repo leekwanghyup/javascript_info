@@ -1,0 +1,12 @@
+<script>
+let user = {
+  name : 'lee',
+  age : 30, 
+  sayHello(){
+    console.log(user.name);
+  }
+}  
+let admin = user;  // 참조값을 복사하고 
+user = null; // user 객체의 참조값을 삭제 한다. 
+admin.sayHello(); // user 객체의 참조값이 삭제 되어서 호출할 수 없다.
+</script>

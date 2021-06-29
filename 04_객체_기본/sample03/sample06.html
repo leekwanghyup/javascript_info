@@ -1,0 +1,23 @@
+<script>
+  "use strict";
+  let user = {
+    firstName : 'lee',
+    sayHello(){
+      let arrow = function(){
+        console.log(this); // undefined
+      }
+      arrow(); 
+    }
+  }
+  user.sayHello(); 
+
+  // 화살표 함수 
+  let user2 = {
+    firstName : 'lee',
+    sayHello(){
+      let arrow = () => console.log(this); // user2 객체 
+      arrow(); 
+    }
+  }
+  user2.sayHello(); 
+</script>

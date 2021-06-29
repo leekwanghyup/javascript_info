@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>옵셔널체이닝</title>
+</head>
+<body>
+<script>
+// user.address.street를 주소정보를 나타내는 프라퍼티라 가정하자.
+let user = {};  
+// console.log(user.address.street); // Erro! user 속성 정보에 없는 값 
+
+// 옵셔널 체이닝 등장 이전 
+console.log( user && user.address && user.address.street); // undefined
+
+// 옵셔널 체이닝 등장 이후 
+console.log(user?.address?.street); // undefined
+</script>
+</body>
+</html>

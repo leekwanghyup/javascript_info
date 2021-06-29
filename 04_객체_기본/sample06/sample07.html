@@ -1,0 +1,20 @@
+<script>
+  let id = Symbol('아이디');
+  let user = {
+    name : 'lee',
+    age  : 30, 
+    [id] : 123
+  }
+  console.log(user);
+  for(let key in user){
+    console.log(key, user[key]); // 심볼형은 배제된다.
+  }
+  
+  // Object.keys(객체)에서도 심볼형은 배제된다.
+  console.log(Object.keys(user));
+
+  // 심볼형 프로퍼티까지 복사한다.
+  let user2 = Object.assign(user);
+  console.log(user2);
+  
+</script>

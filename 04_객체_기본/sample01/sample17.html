@@ -1,0 +1,13 @@
+<script>
+// 정수프로퍼티 이외의 프로퍼티는 추가한 순서대로 순회한다. 
+let obj = {
+  one : '추가1',
+  two : '추가2',
+  three : '추가3',
+  four : '추가4'
+}
+console.log(obj);
+for(let key in obj){
+  console.log(obj[key]);
+}
+</script>

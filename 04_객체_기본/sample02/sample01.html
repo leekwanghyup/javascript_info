@@ -1,0 +1,22 @@
+<script>
+  // 원시타입
+  let message = "Hello"; // 
+  let phrase = message;  // 새로운 변수 공간을 만든다. 
+  
+  console.log(message); 
+  console.log(phrase);
+  message = 'Hi';
+  console.log(message); 
+  console.log(phrase);
+
+  // 객체 타입
+  let user = { name : 'lee', age : 36 }
+  let person = user; 
+  console.log(user);
+  console.log(person);
+  user.name = 'hong';
+  console.log(user); // name : 'hong'
+  console.log(person); // name : 'hong'
+
+  
+</script>

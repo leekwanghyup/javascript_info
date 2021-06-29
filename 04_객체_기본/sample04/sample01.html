@@ -1,0 +1,19 @@
+<script>
+function User(name){ 
+  // this = { }; 
+  this.name = name;  // name프로퍼티를 this에 추가 
+  this.isAdmin = false; // isAdmin 프로퍼티를 this에 추가 
+  // return this; 
+}
+
+let user = new User('lee');
+console.log(user);
+
+// 익명생생성자 함수 
+let person = new function(){
+  this.name = 'hong';
+  this.isAdmin = true; 
+}
+console.log(person);
+
+</script>

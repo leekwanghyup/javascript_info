@@ -1,0 +1,22 @@
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script>
+let objects = [{ 'a': 1 }, { 'b': 2 }];
+let deep = _.cloneDeep(objects);
+console.log(objects);
+console.log(deep);
+console.log(deep[0] === objects[0]);
+
+let user = {
+  name: "lee",
+  sizes: { // sizes는 객체의 참조값이다. 
+    height: 182,
+    width: 50
+  }
+};
+let clone = _.clonedeep(user);
+console.log(clone);
+console.log(user.sizes == clone.sizes);
+console.log(user.sizes === clone.sizes);
+
+
+</script>

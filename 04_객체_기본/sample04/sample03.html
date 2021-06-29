@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+function User(name){
+  if(!new.target) return new User(name); 
+  this.name = name; 
+  this.isAdmin = false; 
+}
+let user = User('leekwanghyup'); // new 생성자를 사용한 것처럼 동작한다. 
+console.log(user);
+</script>

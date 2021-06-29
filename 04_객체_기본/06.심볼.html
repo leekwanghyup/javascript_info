@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>심볼</title>
+  <style>b{color: red;}</style>
+</head>
+<body>
+  <h3>심볼 기본</h3>
+  <ul>
+    <li>심볼(symbol)'은 유일한 식별자(unique identifier)를 만들고 싶을 때 사용한다.</li>
+    <li>심볼의 생성 <b>sample01.html</b>
+      <ul>
+        <li>심볼을 만들 때 심볼 이름이라 불리는 설명을 붙일 수 있다.</li>
+        <li>설명이 동일한 심볼을 여러 개 만들어도 각 심볼값은 다르다.</li>
+      </ul>
+    </li>
+    <li>심볼은 문자형으로 자동변환되지 않는다. <b>sample02.html</b></li>
+    <li>심볼을 반드시 출력해야한다면 toString()메소드를 사용한다. <b>sample03.html</b></li>
+    <li>symbol.description 프로퍼티를 이용하면 설명 값을 가져올수 있다. <b>sample04.html</b></li>
+  </ul>
+  <h3>숨김 프로퍼티</h3>
+  <ul>
+    <li>심볼을 이용하면 서드파티 코드에서 가지고온 객체에 식별자를 부여할 수 있다.</li>
+  </ul>
+  <h3>리터럴에서 심볼형 키 만들기</h3>
+  <ul>
+    <li>객체 리터럴 {...}을 사용해 객체를 만든 경우, 대괄호를 사용해 심볼형 키를 만들어야 한다. <b>sample06.html</b></li>
+  </ul>
+  <h3>for in , Object.keys(user), Object.assign에서 심볼  </h3>
+  <ul>
+    <li>심볼은 for in에서 배제된다. <b>sample07.html</b></li>
+    <li>Object.keys(user)에서도 키가 심볼인 프로퍼티는 배제된다.</li>
+    <li>그러나 Object.assign은 키가 심볼인 프로퍼티를 배제하지 않고 객체 내 모든 프로퍼티를 복사한다.</li>
+  </ul>
+  <h3>전역 심볼</h3>
+  <ul>
+    <li>이름이 같은 심볼이 같은 개체를 가리키길 원하는 경우도 가끔 있다.</li>
+    <li>전역 심볼 레지스트리(global symbol registry) 는 이런 경우를 위해 만들어졌다.</li>
+    <li>레지스트리 안에 있는 심볼을 읽거나, 새로운 심볼을 생성하려면 Symbol.for(key)를 사용한다.</li>
+    <li><b>sample08.html</b></li>
+  </ul>
+  <h3>Symbol.KeyFor</h3>
+  <ul>
+    <li>Symbol.keyFor(sym)를 사용하면 이름을 얻을 수 있다.</li>
+    <li>일반 심볼은 descrition 프로퍼티를 사용한다는 것을 상기하자.</li>
+    <li>sample08.html</li>
+  </ul>
+</body>
+</html>

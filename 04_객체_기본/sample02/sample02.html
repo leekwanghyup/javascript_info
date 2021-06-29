@@ -1,0 +1,13 @@
+<script>
+let user = {name : 'lee', age : 22};
+let person = user; 
+
+console.log(user == person); // 동등 연산자 
+console.log(user === person); // 일치 연산자 
+
+// 두객체는 모두 독립된 객체이므로 일치연산자 동등연산자 모두 거짓을 반환한다. 
+let student1 = {name : 'lee', age: 10}
+let student2 = {name : 'lee', age: 10}
+console.log(student1 == student2);
+console.log(student1 === student2);
+</script>

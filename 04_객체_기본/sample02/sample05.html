@@ -1,0 +1,16 @@
+<script>
+let user = {
+  name: "lee",
+  sizes: { // sizes는 객체의 참조값이다. 
+    height: 182,
+    width: 50
+  }
+};
+
+let clone = Object.assign({},user);
+console.log(clone);
+
+// user.sizes와 clone.sizes는 같은 값을 가르키고있다. 즉 참조값이 복사되었다.
+console.log(user.sizes == clone.sizes);  //true
+console.log(user.sizes === clone.sizes); // true
+</script>

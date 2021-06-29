@@ -1,0 +1,17 @@
+<script>
+console.log(typeof 0); // number 
+console.log(typeof new Number(0)); //obejct
+
+let zero = new Number(0);
+if(zero){ // 조건문 평가시 객체는 항상 true로 평가한다. 
+  console.log('(1)조건문이 참이면 출력!')
+}
+zero = 0; 
+if(zero){ // false
+  console.log('(2)조건문이 참이면 출력!')
+}
+
+// new 키워드를 붙이지 않고 사용하면 괜찮다. 
+let zero2 = Number(0); 
+console.log(typeof zero2); //number
+</script>
