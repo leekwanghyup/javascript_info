@@ -1,0 +1,92 @@
+<script>
+    // 특정글자에 접근
+    let str = "Hello";
+    console.log(str[0]); // 최근 방법
+    console.log(str.charAt(0)); // for 하위호환
+
+    // 반환하려는 글자가 없을 때 
+    console.log(str[1000]); // undefined
+    console.log(str.charAt(1000)); // 빈문자열
+
+    // for of 구문 
+    for (let char of str){
+        console.log(char);
+    }
+
+    // 문자열의 불변성 
+    let str2 = "lee";
+    str2[0] = 'K'; // 동작하지 않는다.
+    console.log(str2);
+
+    // 부분문자열 찾기 
+    let str3 = 'Widget with id';
+    console.log(str3.indexOf("with")); // 7
+    console.log(str3.indexOf("id")) // 1
+    console.log(str3.indexOf("id",2)); // 12
+
+    // indexOf를 사용한 반복문 
+    let str4 = 'As sly as a fox, as strong as an ox';
+    let target = 'as'; // as를 찾아봅시다.
+    let pos = 0;
+    while (true) {
+        let foundPos = str4.indexOf(target, pos);
+        if (foundPos == -1) break;
+        console.log( `위치: ${foundPos}` );
+        pos = foundPos + 1; // 다음 위치를 기준으로 검색을 이어갑니다.
+    }
+    
+    // if문에서 indexOf()를 쓸때 주의점 
+    let str5 = 'hello world';
+    if(str5.indexOf('hello')){ // 0을 반환 
+        console.log('문자열 찾음'); // 동작하지 않음 
+    }
+    // 올바른 사용방법
+    if(str5.indexOf('hello') != -1){ // 0을 반환 
+        console.log('문자열 찾음'); // 동작하지 않음 
+    }
+
+    // includes, startsWith, endsWith
+    let str6 = 'hello world';
+    console.log(str6.includes('world'));
+    console.log(str6.startsWith('he')); 
+    console.log(str6.endsWith('world'));
+
+    // 부분문자열 추출 slice : 원본 변화 없음 
+    // 파라미터 : 인덱스 값 
+    let str7 = 'hello world';
+    console.log(str7.slice(1,5)); // ello
+    console.log(str7.slice(6)); // world 인수가 하나이면 마지막까지 추출한다. 
+
+    // substring()
+    let str8 = "stringify";
+    console.log( str8.substring(2, 6) ); // "ring"
+    console.log( str8.substring(6, 2) ); // "ring"
+    // substr(startIndex, lenght)
+    console.log(str8.substr(0,3)); // str; 
+
+    // str.codePointAt(pos)
+    let str9 = "abcde"; 
+    console.log(str9.codePointAt(0)); // 97
+    console.log(str9.codePointAt(1)); // 98
+    console.log(str9.codePointAt(2)); // 99
+    console.log(str9.codePointAt(3)); // 100
+    console.log(str9.codePointAt(4)); // 101
+    for(let char of str9){
+        console.log(char.codePointAt());
+    }
+    
+    // String.fromCodePoint(code) 숫자 형식의 code에 대응하는 글자를 만들어줍니다.
+    let test = String.fromCharCode(97); // a
+    test += String.fromCharCode(98); //b
+    test += String.fromCharCode(99); //c
+    test += String.fromCharCode(100); //d
+    test += String.fromCharCode(101); //e
+    console.log(test); // abcde
+
+    // str1.localeCompare(str2); 
+    let test2 = "test".localeCompare('가나다');
+    let test3 = "가나다".localeCompare('test');
+    console.log(test2, test3);
+
+    
+</script>

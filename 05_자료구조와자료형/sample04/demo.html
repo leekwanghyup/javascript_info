@@ -1,0 +1,106 @@
+<script>
+"use strict";
+// 배열 선언 
+
+// 빈 배열 
+let arr = new Array(); 
+let arr2 = []; 
+
+
+// 배열 요소, 인덱스 
+let fruit = ['사과','딸기','자두'];
+console.log(fruit[0]);
+console.log(fruit[1]);
+console.log(fruit[2]);
+
+// 요소 수정 
+fruit[1] = '오렌지'; 
+console.log(fruit);
+
+// 새로운 요소 배열 추가 
+fruit[3] = '레몬';
+console.log(fruit);
+
+// 배열의 길이 
+console.log(fruit.length); // 4
+
+// pop()
+// 현재 배열의 상태 : ["사과", "오렌지", "자두", "레몬"]
+const test = fruit.pop(); // 꺼낸 요소(레몬)를 저장
+console.log(fruit); // ["사과", "오렌지", "자두"]
+
+// push()
+fruit.push("바나나");
+console.log(fruit); //  ["사과", "오렌지", "자두", "바나나"]; 
+
+// shift()
+fruit.shift(); // 사과 제거 
+console.log(fruit); // ["오렌지", "자두", "바나나"]; 
+
+// 배열은 객체와 마찬가지로 참조 복사를 한다. 
+let arr3 = fruit; 
+console.log(arr3 === fruit); //true
+arr3[0] = '배'; 
+console.log(arr3); // ["배", "자두", "바나나"]; 
+console.log(fruit); // ["배", "자두", "바나나"]; 
+
+// 배열은 객체이므로 예시처럼 원하는 프로퍼티를 추가할 수 있다. 
+let arr4 = ['demo1','demo2'];
+arr4.test = '배열에 프라퍼티 추가';
+console.log(arr4); 
+// 이렇게 코드를 작성하면 자바스크립트 엔진이 배열을 일반 객체처럼 다루게 되어 
+// 배열을 다룰 때만 적용되는 최적화 기법이 동작하지 않아 배열 특유의 이점이 사라진다.
+
+// 반복문 
+console.log(fruit); //  ["배", "자두", "바나나"]
+for(let element of fruit){ // 인덱스는 얻을 수 없고 값만 얻을 수 있다.
+    console.log(element);
+}
+
+for(let index in fruit){ 
+    console.log(index + " : " + fruit[index]);
+}
+// for..in 반복문은 키가 숫자형이 아닌 모든 프러퍼티들을 대상으로 순회가 이루어진다.
+// for..in 반복문은 배열이 아니라 객체와 함께 사용할 때 최적화되어 있어서 배열에 사용하면 객체에 사용하는 것 대비 10~100배 정도 느리다.
+// 배열엔 되도록 for..in을 쓰지말자
+
+// length의 값을 수동으로 증가시키면 아무 일도 일어나지 않는다.
+// 그런데 값을 감소시키면 배열이 잘린다. 
+// 짧아진 배열은 다시 되돌릴 수 없다. 
+let arr5 = [1, 2, 3, 4, 5];
+arr5.length = 2; // 요소 2개만 남기고 자름
+console.log(arr5); // [1,2]
+arr.length = 5; // 본래의 길이로
+console.log(arr5); // [1,2]
+
+function newArrayTest(){
+    let arr = new Array('사과, 오렌지','베');
+    console.log(arr); // 배열생성
+
+    let numberArr = new Array(2); // 의도 [2]배열 생성
+    console.log(numberArr); // 결과 : 길이가 2인 배열 생성 
+}
+// newArrayTest(); 
+
+
+function multidimensionalArray(){
+    let matrix = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ];
+    console.log(matrix[1][2]); // 6
+}
+// multidimensionalArray(); 
+
+// toString을 호출하면 요소를 쉼표로 구분한 문자열이 반환된다.
+function arrayToString(){
+    let arr = [1,2,3];
+    console.log(arr.toString()); // 문자열 '1,2,3' 반환
+}
+// arrayToString();
+
+
+
+</script>
+

@@ -1,0 +1,32 @@
+<script>
+// 이터러블 객체 직접 구현 
+function iterableTest(){
+    let range = {
+        from : 1, 
+        to : 5
+    }; 
+    range[Symbol.iterator] = function(){
+        return{
+            current : this.from, 
+            last : this.to, 
+            next(){
+                return (this.current <= this.last) ? 
+                    {done : false, value : this.current++ } : {done : true};
+            }
+        };
+    }
+    for (let num of range) {
+        console.log(num); // 1, then 2, 3, 4, 5
+    }
+}
+
+// 이터레이터 명시적 호출 
+function iteratorTest(){
+    let str = "Call Iterator";
+    let iterator = str[Symbol.iterator](); 
+    while(true){
+        let result = iterator.next(); 
+        if (result.done) break; 
+    }
+}
+</script>

@@ -1,0 +1,300 @@
+<script>
+
+// 배열도 객체이므로 delete를 사용하여 요소를 제거할 수 있다.
+function delete를사용하여배열요소삭제(){
+    let arr = ["I", "go", "home"];
+    delete arr[1];
+    console.log(arr); 
+    console.log(arr[1]); //undefined 
+    console.log(arr.length); // 여전히 길이는 3이다. 
+}
+// delete를사용하여배열요소삭제(); 
+
+// arr.splice(start) 배열의 요소 추가, 삭제, 교체가 모두 가능하다.
+function splice배열요소삭제(){
+    let arr = ["I", "study", "JavaScript", "sping", 'mysql', 'oracle'];
+    let 삭제된것들 =  arr.splice(1,2); // 인덱스1부터 요소 2개 삭제 : "study", "JavaScript"
+    console.log(arr);
+    console.log(삭제된것들);
+}
+// splice배열요소삭제();
+
+function splice배열요소교체(){
+    // "I", "study", "JavaScript"를 지우고 html, css3로 교체해보자
+    let arr = ["I", "study", "JavaScript", "sping", 'mysql', 'oracle'];
+    let 삭제된것들 = arr.splice(0,3,"html","css");
+    console.log(arr);
+    console.log(삭제된것들);
+}
+// splice배열요소교체();
+
+function splice배열끝에요소추가(){
+    let arr = ["I", "study", "JavaScript"];
+    arr.splice(arr.length, 0, 'sping', 'mysql', 'oracle'); 
+    console.log(arr);
+}
+// splice배열끝에요소추가();
+
+function splice배열요소추가(){
+    let test = [1,2,3,4,5];
+    test.splice(1,0,'가','나'); // [1,'가','나',2,3,4,5];
+    console.log(test);
+}
+// splice배열요소추가(); 
+
+function 음수인덱스사용(){
+    // 음수인덱스 : 요소의 끝에서부터 -1, -2, -3 ...
+    let arr = [1,2,3,4,5,6];
+    // [1,2,3,'여기에추가'4,5,6] 인덱스: -3 
+    arr.splice(-3,0,'여기에추가');
+    console.log(arr);
+}
+// 음수인덱스사용(); 
+
+function slice사용() {
+    let arr = ["I", "study", "JavaScript", "sping", 'mysql', 'oracle'];
+    let test = arr.slice(1,4); // 파라미터는 startIndex, endIndex이다. endIndex요소는 미포함
+    console.log(test);
+    console.log(arr); // 복사한 새로운 배열을 반환하므로 원본배열이 바뀌지 않는다.
+}
+// slice사용(); 
+
+function concat사용(){
+    let arr = [1,2]; // 원본 배열은 변하지 않는다. 
+    let test = arr.concat(3,4,5,6,7); // 가변인자
+    console.log(test);
+}
+// concat사용();
+
+function concat사용2(){
+    let arr = [1,2]; 
+    let test = arr.concat([3,4],[5,6],7); // 여러 배열을 인자로 전달하여도 하나의 배열에 합쳐진다. 
+    
+    console.log(test);
+    // [1,2, [3,4], [5,6], 7] 이런방식으로 동작하지 않음을 주의 
+    // 결과 :  [1, 2 ,3, 4, 5, 6, 7]
+}
+// concat사용2(); 
+
+// 객체로 인자를 넘길 경우
+function concat사용3(){
+    let arr = [1,2]; 
+    let arrayLike = {
+        test1 : '가', 
+        test2 : '나'
+    }
+    let test = arr.concat(arrayLike);  // 객체는 분해되지 않고 통째로 복사된다. 유사배열인 경우도 마찬가지이다.
+    console.log(test);
+} 
+// concat사용3(); 
+
+function concat사용4(){
+    let arr = [1,2]; 
+    let arrayLike = { // 유사배열 
+        0 : '가', 
+        1 : '나',
+        length : 2,
+        [Symbol.isConcatSpreadable]: true // 유사배열에 이 프로퍼티가 true이면 concat은 이 객체를 배열 취급한다.
+    }; 
+    let test = arr.concat(arrayLike);  // [1,2,'가','나']
+    console.log(test);
+}
+// concat사용4();
+
+// foreach 메서드로 반복작업
+function foreachTest(){
+    let arr = ["Bilbo", "Gandalf", "Nazgul"];
+    arr.forEach(function(item, index, array){
+        console.log(item, index, array); // 배열요소, 인덱스, 현재대상배열 
+    })
+}
+// foreachTest(); 
+
+function includesTest(){
+    let arr = [1, 0, false];
+    console.log(arr.includes(0)); // 0이 베열내에 존재하므로 true 반환
+    console.log(arr.includes(-1)); // 요소를 찾을 수 없음 false 반환
+    // 요소를 찾을 때 항등 연산자 '=='를 사용한다.
+}
+// includesTest(); 
+
+function indexOfTest(){
+    let arr = [1, 0, false, '사제','성기사','마법사','전사'];
+    console.log(arr.indexOf('사제')); // 3 
+    console.log(arr.indexOf('주술사')); // 요소를 찾을 수 없음 -1반환 
+}
+// indexOfTest(); 
+
+function includesNaNTest(){
+    const arr = [NaN];
+    console.log(arr.includes(NaN)); // NaN을 처리할 수 있다. 
+    console.log(arr.indexOf(NaN)); // -1 : NaN을 처리할 수 없다
+}
+// includesNaNTest();
+
+function findTest(){
+    let users = [ // 객체로 이루어진 배열 
+        {id: 1, name: "John"},
+        {id: 2, name: "Pete"},
+        {id: 3, name: "Mary"}
+    ];
+    let user = users.find(function(item, index, array){
+        return item.id == 2; // 조건에 맞는 요소가 없으면 undefined를 반환한다.
+    }); 
+    console.log(user); // 배열로 감싼 객체가아니라 요소자체를 반환한다. 
+    // { id : 1, name : "Peter" }    - O
+    // [{ id : 1, name : "Peter" }]  - X
+}
+// findTest(); 
+
+function filterTest(){
+    let users = [ // 객체로 이루어진 배열 
+        {id: 1, name: "John"},
+        {id: 2, name: "Pete"},
+        {id: 3, name: "Mary"}
+    ];
+    let user = users.filter(function(item, index, array){
+        return item.id >= 2; // 조건에 맞는 요소가 없는 경우 빈 배열을 반환한다.  
+    }); 
+    console.log(user); // 객체들은 하나의 배열안에 감싸여있다.
+    // [{ id : 2, name : "Peter" },{ id : 3, name : "Mary" }]  
+}
+// filterTest();
+
+function mapTest(){
+    let users = [ // 객체로 이루어진 배열 
+        {id: 1, name: "John"},
+        {id: 2, name: "Pete"},
+        {id: 3, name: "Mary"}
+    ];
+    let userName = users.map(function(item,index,array){
+        return item.name; // 객체로부터 name만 가져온다. 
+    }); 
+    console.log(userName);
+}
+// mapTest();
+
+function sortTest(){
+    let arr = [1,22,5,3,14]; 
+    arr.sort(); // 원본배열을 변환한다. 따라서 반환값을 사용하지 않는다. 
+    console.log(arr);
+    // 의도 : [1, 3, 5, 14, 22]
+    // 결과 : [1, 14, 22, 3, 5]
+    // 요소는 문자열로 취급되어 재정렬되기 때문에 이러한 결과가 나왔다. 
+    
+}
+// sortTest(); 
+
+function sortOrderBy(){
+    let arr = [1,22,5,3,14]; 
+    arr.sort(function(a,b){
+        return a-b; 
+    })
+    console.log(arr); // 숫자 오름차순 정렬 
+    arr.sort((a,b)=> b-a);
+    console.log(arr); // 숫자 내림차순 정렬  
+}
+// sortOrderBy();
+
+//문자열엔 localeCompare를 사용하자
+function stringCompareTest(){ // 유니코드를 기준으로 글자를 비교
+    let countries = ['Österreich', 'Andorra', 'Vietnam'];
+
+    // 
+    countries.sort((a,b) => a > b ? 1 : -1);
+    console.log(countries); //  ["Andorra", "Vietnam", "Österreich"]
+
+    // 올바른 정렬
+    countries.sort((a,b)=> a.localeCompare(b));
+    console.log(countries); // ["Andorra", "Österreich", "Vietnam"]
+}
+// stringCompareTest();
+
+function reverseTest(){ // 역순 정렬 
+    let arr = [1,2,3,4,5]; 
+    arr.reverse(); 
+    console.log(arr); // [5,4,3,2,1]
+}
+// reverseTest();
+
+function splitTest(){
+    let nameJSON = 'Bilbo, Gandalf, Nazgul, Saruman'; 
+    let nameList = nameJSON.split(','); // 문자열을 배열로 
+    console.log(nameList); // ["Bilbo", " Gandalf", " Nazgul", " Saruman"]
+}
+// splitTest();
+
+function splitTest2(){ // 문자열을 문자단위로 분리 
+    let str = "leekwanghyup";
+    let char = str.split('');
+    console.log(char);
+}
+// splitTest2(); 
+
+function splitTest3(){ // 배열의 길이를 정하여 나머지 부분을 잘라 낼수 있다.
+    let nameJSON = 'Bilbo, Gandalf, Nazgul, Saruman'; 
+    let nameList = nameJSON.split(',',2); // 2개의 요소로 제한 
+    console.log(nameList);  // ["Bilbo", " Gandalf"]
+}
+// splitTest3();
+
+function joinTest(){ // 배열을 하나의 문자열로 
+    let nameList =  ["Bilbo", " Gandalf", " Nazgul", " Saruman"];
+    let nameStr = nameList.join('|'); 
+    let nameStr2 = nameList.join(); // 구분자를 전달하지 않으면 ','
+    console.log(nameStr); // Bilbo| Gandalf| Nazgul| Saruman
+    console.log(nameStr2); // Bilbo, Gandalf, Nazgul, Saruman
+}
+// joinTest();
+
+// reduce와 reduceRight는 배열을 기반으로 값 하나를 도출할 때 사용한다. 
+// arr.reduce((누적값,배열요소,인덱스,현재배열) => acc + item, 초기값)
+function reduceTest(){
+    let arr = [1,2,3,4,5];
+    let result1 = arr.reduce((acc,item) => acc + item); //초깃값을 정하지 않으면 처음요소가 초기값이 된다. 
+    console.log(result1);
+    
+    let result2 = arr.reduce((acc,item) => acc*item,1); 
+    console.log(result2);
+}
+// reduceTest(); 
+
+function reduceLikMap(){ // reduce를 map처럼 사용하기 
+    let oneTwoThree = [1,2,3];
+    let result = oneTwoThree.reduce((acc, item) => {
+        acc.push(item % 2 ? '홀수' : '짝수');    
+    return acc;},[]);
+    console.log(result);
+    // 초깃값 [], 
+    // item1 : ['홀수']
+    // item2 : ['홀수','짝수']
+    // item3 : ['홀수','짝수', '홀수']
+}
+// reduceLikMap(); 
+
+function reduceLikeFilter(){ // reduce를 filter처럼 사용하기
+    let arr = [1,2,3,5,11,21,50]; 
+    let result = arr.reduce((acc, item) => {
+        if(item > 10) acc.push(item);
+        return acc; 
+    },[])
+    console.log(result);
+}
+// reduceLikeFilter(); 
+
+function wetherObjOrArr(){
+    // typeof 연산자로 배열과 객체를 구분할 수 없다. 
+    console.log(typeof {});// object
+    console.log(typeof []);// object
+}
+// wetherObjOrArr();
+
+function isArrayTest(){
+    console.log(Array.isArray({})); // 객체이므로 false
+    console.log(Array.isArray([])); // 배열이므로 true
+}
+isArrayTest(); 
+
+
+
+</script>
