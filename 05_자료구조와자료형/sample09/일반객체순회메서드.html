@@ -1,0 +1,69 @@
+<script>
+ 
+/*
+Map, Set, Array의 순회 메서드는 이터레이터를 반환하는 반면 이 메서드들 배열을 반환한다.
+Object.keys(obj) – 객체의 키만 담은 배열을 반환합니다.
+Object.values(obj) – 객체의 값만 담은 배열을 반환합니다.
+Object.entries(obj) – [키, 값] 쌍을 담은 배열을 반환합니다.
+*/
+
+function test01(){
+    let user = { name : 'lee', age : 17, email : 'lee@naver.com'};
+    let userkeys = Object.keys(user); // [ "name", "age", "eamil" ];
+    let userValues = Object.values(user); // [ 'lee', 17, 'lee@naver.com' ] 
+    let userEntries = Object.entries(user); //[ ['name' , 'lee'], ['age',  17], ['email', 'lee@naver.com'] ]
+    console.log(userkeys); 
+    console.log(userValues); 
+    console.log(userEntries); 
+}
+// test01(); 
+
+
+// Object.entries와 Object.fromEntries를 순차적으로 적용하면 
+// 객체에도 배열 전용 메서드 사용할 수 있다. 적용 방법은 다음과 같다.
+// Object.fromEntries() : 배열을 객체로 
+function test02(){
+    let prices = {
+        banana: 1,
+        orange: 2,
+        meat: 4,
+    };
+    
+    let doublPirce = Object.fromEntries(
+        Object.entries(prices) // 객체를 배열로 변환 후 
+            .map( ([key, value]) => [key, value * 2] ) // 배열메서드 적용 
+    ); 
+    console.log(doublPirce);
+}
+// test02(); 
+
+
+// 과제 
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+let emptyObj = {};
+
+// 객체의 프로퍼티 값을 모두 더하는 함수 
+function sumSalaries(salaries){
+    return Object.values(salaries).reduce((acc, item) => { return acc + item;}, 0);
+}
+let result = sumSalaries(salaries); 
+console.log(result);
+console.log(sumSalaries(emptyObj));
+
+let user = {
+  name: 'John',
+  age: 30
+};
+
+// 객체 프로퍼티 개수를 반환하는 함수 
+function countObj(obj){
+    return Object.keys(obj).length; 
+}
+console.log(countObj(user));
+
+
+</script>

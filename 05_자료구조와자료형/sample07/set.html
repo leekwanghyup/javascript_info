@@ -1,0 +1,84 @@
+<script>
+
+function setCreate(){
+    let set = new Set(); 
+    let lee = {name:'lee'} 
+    let kim = {name:'kim'} 
+    let na = {name:'na'} 
+    let park = {name:'park'} 
+    set.add(lee); 
+    set.add(kim);
+    set.add(park).add(na); // 체이닝 가능
+    set.add(lee); // 중복허용하지 않음 
+    console.log(set);
+    console.log("크기 : " + set.size); 
+}
+// setCreate(); 
+
+function setCreate2(){
+    // 배열을 파라미터로 전달 
+    let set = new Set(["test1", "test2","test3"]);
+    console.log(set);
+
+    let lee = {name:'lee'} 
+    let kim = {name:'kim'} 
+    let na = {name:'na'} 
+    let park = {name:'park'} 
+    let set2 = new Set([kim, na, park, lee]); 
+    console.log(set2);
+}
+// setCreate2(); 
+
+// 값 삭제 
+function setDelete(){ 
+    let set = new Set(["test1", "test2", "test3", "test4"]);
+    let isDelete = set.delete("test1");  
+    console.log(isDelete); // 삭제 되면 true 반환
+    console.log(set); // ["test2", "test3", "test4"]
+}
+// setDelete(); 
+
+// 값 존재여부 검사 set.has(value)
+function setHasTest(){ 
+    let set = new Set(["test1", "test2", "test3", "test4"]);
+    let hasElement = set.has("test1");  
+    console.log(hasElement); // 값이 존재하면 true 반환 
+}
+// setHasTest(); 
+
+// 모든 값 삭제 set.delete(value); 
+function setClearTest(){
+    let set = new Set(["test1", "test2", "test3", "test4"]);
+    console.log();
+    console.log(set);
+}
+// setClearTest(); 
+
+// 반복작업을 위한 메소드 : keys(), values(), entries()
+function iterateSet(){
+    let set = new Set(["oranges", "apples", "bananas"]);
+    console.log("keys : ",set.keys()); // ["oranges", "apples", "bananas"]
+    console.log("values : ",set.values()); // ["oranges", "apples", "bananas"]
+    console.log("entries : ",set.entries()); // ["oranges" => ""oranges"", "apples"=> "apples", "bananas"=>"bananas"]
+}
+// iterateSet(); 
+
+function iterateForOf(){
+    let set = new Set(["oranges", "apples", "bananas"]);
+    for(let value of set.values()){
+        console.log(value); 
+    }
+}
+// iterateForOf(); 
+
+
+function iterateForEach(){
+    let set = new Set(["oranges", "apples", "bananas"]);
+    set.forEach((value, valueAgain, set) => {
+        console.log(value);
+        console.log(valueAgain); // value값과 같은 값이다. map과의 호환성을 위한 것
+    });
+}
+// iterateForEach(); 
+
+</script>

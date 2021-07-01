@@ -1,0 +1,175 @@
+<script>
+/*
+new Map() – 맵생성
+map.set(key, value) : key를 이용해 value 저장
+map.get(key) – key에 해당하는 값을 반환. key가 존재하지 않으면 undefined를 반환
+map.has(key) – key가 존재하면 true, 존재하지 않으면 false를 반환
+map.delete(key) – key에 해당하는 값을 삭제
+map.clear() – 맵 안의 모든 요소를 제거.
+map.size – 요소의 개수를 반환
+*/
+function createMapTest(){ // map.set 사용
+    let map = new Map(); 
+    // 맵은 키에 다양한 자료형을 허용한다는 점에서 객체와 차이가 있다.
+    map.set('1', 'str1');  
+    map.set(1, 'num1'); 
+    map.set(true, 'true'); 
+    map.set({ name : 'lee' }, 'user1'); // 객체를 키로 설정할 수 있다.
+    console.log(map);
+    console.log(map.size); //4 
+}
+// createMapTest(); 
+
+function createMapTest2(){
+    // 2차원 배열을 인수로 전달 
+    let map = new Map([
+        ['name', "leekwanghyup"],
+        ['age', 24],
+        ['email',"lee@naver.com"]
+    ]);
+    console.log(map);
+}
+// createMapTest2(); 
+
+function mapForMethod(){
+    let map = new Map([
+        ['name', "leekwanghyup"],
+        ['age', 24],
+        ['email',"lee@naver.com"]
+    ]);
+    let hasKey =  map.has("name"); // 존재하면 true 반환
+    console.log("name키가 존재하는가? ",hasKey);
+    map.delete("name"); // name 키 삭제 
+    console.log(map); //  {"age" => 24, "email" => "lee@naver.com"}
+    map.clear(); // map의 모든 요소삭제 
+    console.log(map); // {}
+}
+// mapForMethod(); 
+
+
+// 객체의 프로퍼티는 문자열로 변환된다. 
+function objectPropertyTest() {
+    // 객체의 프라퍼티를 키로 저장해보자. 
+    let user = {name : 'lee'}; 
+    let test = {}; 
+    test[user] = "객체를 키로하여 이 값을 저장";
+    console.log(test[user]); // 이 과정에서 user 객체는 문자열 "[object Object]"로 변환된다.
+    console.log(test["[object Object]"]); 
+} 
+// objectPropertyTest(); 
+
+function mapSetTest(){
+    let map = new Map(); 
+    map["name"] = 'leekwanghyup'; // 이 방법은 맵을 객체처럼 취급하여 map을 사용하는데 여러제약이 생긴다.
+    console.log(map["name"]); // 객체처럼 조회할 수 있다. 
+}
+// mapSetTest(); 
+
+// map.set 체이닝
+function chainingSetMap(){ 
+    let map = new Map(); 
+    map.set("name", "lee")
+        .set("age", 17)
+        .set("email","lee@naver.com");
+    console.log(map);
+}
+// chainingSetMap();
+
+
+// 맵요소 반복작업 : 삽입 순서로 반복 작업을 한다.
+
+function iterateMapKeys(){
+    let map = new Map([ 
+        ["name","leekwanghyup"],
+        ["age", 33],
+        ["email","lee@naver.com"]
+    ]);
+    console.log(map.keys()) // 이터레이터 key리스트를 반환한다. 
+    for(let key of map.keys()){
+        console.log(key);
+    }
+}
+// iterateMapKeys();
+
+function iterateMapValues(){
+    let map = new Map([ 
+        ["name","leekwanghyup"],
+        ["age", 33],
+        ["email","lee@naver.com"]
+    ]);
+    console.log(map.values()); // 이터레이터 value리스트를 반환한다.
+    for(let value of map.values()){
+        console.log(value);
+    }
+}
+// iterateMapValues();
+
+function iterateMapEntries(){
+    let map = new Map([ 
+        ["name","leekwanghyup"],
+        ["age", 33],
+        ["email","lee@naver.com"]
+    ]);
+    // console.log(map.entries()); 
+    for(let entry of map.entries()){ // map과 동일함
+        console.log(entry);
+    }
+}
+// iterateMapEntries();
+
+function foreachMapTest(){
+    let map = new Map([ 
+        ["name","leekwanghyup"],
+        ["age", 33],
+        ["email","lee@naver.com"]
+    ]);
+    map.forEach((value, key, map) => console.log(key)); 
+    map.forEach((value, key, map) => console.log(value));
+}
+// foreachMapTest();
+
+
+// Object.entries(obj)는 [[ key1, value1], [key2, value2] ]를 반환한다. 
+// 이때 객체의 프로퍼티는 Map의 key가되고 객체의 value는 Map의 value가 된다.
+function ObjectEntriesTest(){
+    let user = { name : 'foo', age : 18}; 
+    let test = Object.entries(user); // [ [ 'name', 'foo' ], ['age','18'] ]
+    console.log(test)
+}
+// ObjectEntriesTest();
+
+// Object.entries(obj) 객체를 맵으로 바꾸기 
+function ObjToMap(){
+    let user = { name : 'foo', age : 18}; 
+    let map = new Map(Object.entries(user));
+    console.log(map.get("name")); // foo
+}
+// ObjToMap(); 
+
+// Object.fromEntries(arr2D) 
+// [[key1, value1], [key2, value2]...] => { key1 : value1, key2 : value2 ...  }
+function ObjectFromEntries(){
+    let user = [
+        ["name", "foo"],
+        ["age", 18]
+    ];
+    let test = Object.fromEntries(user);
+    console.log(test); // { name : 'foo', age : 18 } 
+}
+// ObjectFromEntries(); 
+
+/*
+맵의 생성 : new Map(); 
+key,value 설정 : map.set() 체이닝 가능 , 생성자에 2차원배열 인수로 전달
+맵의 크기 : map.size
+맵의 key리스트 : map.keys()
+맵의 value리스트 : map.values();
+맵의 key와 value 리스트 : map.entries();
+foreach()메서드 가능 : foreach(value, key, map)
+Object.entries(obj)는 객체를 [ [key, value], [key, value], [key, value] .. ] 형태의 배열로 바꾼다. 
+Object.fromEntries(2차원배열)은 2차원배열을 객체로 바꾼다. 
+    [[key1, value1],[key2, value2]...] => { key1 : value1, key2 : value2  }
+*/ 
+
+
+</script>

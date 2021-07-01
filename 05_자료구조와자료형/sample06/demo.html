@@ -22,11 +22,54 @@ function iterableTest(){
 
 // 이터레이터 명시적 호출 
 function iteratorTest(){
+    
     let str = "Call Iterator";
-    let iterator = str[Symbol.iterator](); 
+    let iterator = str[Symbol.iterator]();  // 이터레이터 생성  
+
     while(true){
         let result = iterator.next(); 
-        if (result.done) break; 
+        if (result.done) break; // 더 이상 순회할 요소가 없으면 done프로퍼티는 true가된다. 
+        console.log(result);
     }
 }
+// iterableTest(); 
+
+// 이터러블(iterable) :  메서드 Symbol.iterator가 구현된 객체
+// 유사 배열(array-like) : 인덱스와 length 프로퍼티가 있어서 배열처럼 보이는 객체
+// 문자열은 이터러블인 동시에 유사배열이다.
+
+// Array.from : 이터러블 또는 유사배열객체를 배열로 만들어준다.
+function arrayFromTest(){
+    let arrLike = {  // 유사배열객체
+        0 : 'Hello',
+        1 : 'World',
+        2 : '!',
+        length : 3
+    }
+    let arr = Array.from(arrLike); 
+    console.log(Array.isArray(arrLike)); // false
+    console.log(Array.isArray(arr)); //true 
+}
+// arrayFromTest();
+
+// Array.from : 두 번째 인수로 매핑함수를 넘겨줄 수 있다 .
+function arrayFromParmeter(){
+    let arrLike = {
+        0 : { name : 'lee', age : 28},
+        1 : { name : 'kim', age : 27},
+        2 : { name : 'hong', age : 24},
+        length : 3
+    }
+    let arr = Array.from(arrLike, (e) => e.name ); 
+    console.log(arr);
+}
+// arrayFromParmeter(); 
+
+
+
 </script>
+<style>
+ div {
+     
+ }
+</style>

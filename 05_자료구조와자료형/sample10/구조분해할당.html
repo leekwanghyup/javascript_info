@@ -1,0 +1,44 @@
+<script>
+// Destructuring assignment 구조분해할당
+
+function arrayCase(){
+    let arr = [ "test01", "test02"]
+    let [firstTest, secondTest] = arr; 
+    console.log(firstTest); 
+    console.log(secondTest); 
+}
+// arrayCase();
+
+// 쉼표를 사용하면 필요하지 않은 배열 요소를 버릴 수 있다.
+function 쉼표사용(){
+    let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+    console.log(firstName); // "Julius"
+    console.log(title); // "Caesar"
+}
+// 쉼표사용(); 
+
+// 이터러블객체에도 구조분해할당을 적용할 수 있다. 
+function iterableCase(){
+    let [str1, str2, str3] = "abc";  // 문자열은 이터러블 객체이다.
+    console.log(str1); // a
+    console.log(str2); // b
+    console.log(str3); // c
+
+    let [one, two, three] = new Set([1,2,3]); // 맵,셋은 이터러블 객체이다
+    console.log(one); // 1
+    console.log(two); // 2
+    console.log(three); // 3
+}
+// iterableCase();
+
+// 할당 연산자 좌측엔 ‘할당할 수 있는(assignables)’ 것이라면 어떤 것이든 올 수다. 
+// 객체프로퍼티도 구조분해할당을 적용할 수 있다. 
+let user = {}; 
+[user.naem, user.age] = ["lee", 17];
+console.log(user.naem); // "lee"
+console.log(user.age); // 17
+
+
+
+
+</script>

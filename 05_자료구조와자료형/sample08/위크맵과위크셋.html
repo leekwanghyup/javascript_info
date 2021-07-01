@@ -1,0 +1,56 @@
+<script>
+function test01(){
+    let john = {name : 'lee'}; 
+    let array = [john]; // 배열이 메모리에 남아있는 한 
+    john = null;  // john은 가비지컬렉터의 대상이 되지 않는다. 
+    console.log(array[0]["name"]);  // 요소에 접근할 수 있다.
+}
+// test01();
+
+
+// 위크맵 
+// 위크맵의 키는 반드시 객체이여야만 한다. 원시값은 키가 될 수 없다.
+function weakMapTest(){
+    let weakMap = new WeakMap([
+        [{name : 'lee'}, "value1"],
+        [{name : 'kim'}, "value2"] 
+    ]);
+    console.log(weakMap);
+    
+    // weakMap.set("primiteKey", "value");
+    // Invalid value used as weak map key
+}
+// weakMapTest();
+function mapTest(){
+    let john = { name: "John" }; 
+    let map = new Map([[john, "value"]]); 
+    john = null; // 객체의 참조변수를 삭제하더라도 
+    
+    let key; 
+    for(let obj of map.keys()){ // map 안의 키로 사용된 참조변수는 가비지컬렉터 대상이 아니다 
+        key = JSON.stringify(obj); 
+    }
+    console.log(key);
+}
+// mapTest(); 
+
+
+function weakMapTest2(){
+    let john = { name: "John" }; 
+    let weakMap = new WeakMap([[john, "value"]]);
+    john = null; // 참조값 삭제 
+    // 위크맵의 키로 쓰인 john은 가비지컬렉터의 대상이 된다. 
+    console.log(weakMap);
+}
+weakMapTest2();
+
+// 위크맵은 반복 작업과 keys(), values(), entries() 메서드를 지원하지 않는다. 
+// 가비지컬렉터의 동작시점은 알 수 없다. 자바스크립트 엔진이 결정한다.
+/* 위크맵이 지원하는 메서드는 다음과 같다. 
+    weakMap.get(key)
+    weakMap.set(key, value)
+    weakMap.delete(key)
+    weakMap.has(key) */
+
+
+</script>
